@@ -1,0 +1,47 @@
+{% extends "base.html" %} {%block content%}Crop Prediction Result{% endblock%} {%block body%}
+<h1 style="color: rgb(180, 180, 226);">displaying the weather conditions below for the district {{district_name}}</h1>
+<div style="margin-top:18vh">
+    <table>
+        <tr>
+            <th>N Level (in kg/hectre)</th>
+            <th>P Level (in kg/hectre)</th>
+            <th>K Level (in kg/hectre)</th>
+            <th>Humidity (in %)</th>
+            <th>Temperature (in deg celsius)</th>
+            <th>Rainfall (in mm)</th>
+            <th>PH</th>
+        </tr>
+        <tr>
+            {%for i in values:%}
+            <td>{{i}}</td>
+            {%endfor%}
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th>Nitrogen Level</th>
+            <th>Phosphorous Level</th>
+            <th>potassium Level</th>
+            <th>Humidity </th>
+            <th>Temperature</th>
+            <th>Rainfall </th>
+            <th>PH Level</th>
+        </tr>
+        <tr>
+            {%for i in cont:%}
+            <td>{{i}}</td>
+            {%endfor%}
+        </tr>
+    </table>
+    <h1 style="text-shadow: 3px 3px 3px violet;">Best crop to grow based on above weather condition in the season {{season_name}} is <span style="background-color: yellow;color:red;">{{ cropName }}</span>
+
+    </h1>
+    <p>click beow button to view the graph based analysis</p>
+    <form action="/graph" method="post">
+        <input type="hidden" name="state" value="{{ st_name }}">
+        <button type="submit">View Graphs</button>
+    </form>
+    
+</div>
+{% endblock%}
+</table>
